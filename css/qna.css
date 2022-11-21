@@ -1,3 +1,27 @@
 #qnaPage {
   display: none;
 }
+
+.qBox {
+  width: 80%;
+  background-color: whitesmoke;
+  text-align: center;
+  border-radius: 20px;
+  font-size: 24px;
+}
+
+.answerBox button {
+  width: 100%;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 18px;
+  border: none;
+  outline: none;
+}
+
+.answerBox button:hover,
+.answerBox button:focus {
+  background-color: white;
+  color: #3d3d3d;
+}

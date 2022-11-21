@@ -3,25 +3,28 @@ const qnaPage = document.querySelector("#qnaPage");
 
 let qCount = 0;
 
-function goNext() {
-  let q = document.querySelector(".qBox");
+function addAnswer(alist, qIdx) {
   let aBox = document.querySelector(".answerBox");
 
-  q.innerHTML = qnaList[qCount].q;
-
-  const alist = qnaList[qCount].a;
   const arr = [];
   alist.forEach((item) => {
     const button = document.createElement("button");
     button.innerHTML = item.answer;
+    button.classList.add("mt-3", "py-2")
     button.addEventListener("click", () => {
-      qCount++;
-      goNext();
+      goNext(++qIdx);
     });
     arr.push(button);
   });
 
   aBox.replaceChildren(...arr);
+}
+
+function goNext(qIdx) {
+  let q = document.querySelector(".qBox");
+  q.innerHTML = qnaList[qIdx].q;
+
+  addAnswer(qnaList[qIdx].a, qIdx);
 }
 
 function begin() {
@@ -33,7 +36,7 @@ function begin() {
     qnaPage.style.animation = "fadeIn 0.5s";
     setTimeout(() => {
       qnaPage.style.display = "block";
-      goNext();
+      goNext(0);
     }, 450);
   }, 450);
 }
